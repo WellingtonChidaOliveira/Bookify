@@ -8,7 +8,7 @@ namespace Bookify.Domain.Bookings
             "Booking.Found", 
             "The booking with the specified identifier was not found");
 
-        public static Error OverLap = new(
+        public static Error Overlap = new(
             "Booking.OverLap",
             "The current booking is overlapping with an existing one");
 
