@@ -71,7 +71,7 @@ namespace Bookify.Domain.Bookings
                                BookingStatus.Reserved,
                                utcNow);
 
-            booking.RaiseDomainEvents(new BookingReservedEvent(booking.Id));
+            booking.RaiseDomainEvents(new BookingReservedDomainEvent(booking.Id));
 
             apartment.LastBookedOnUtc = utcNow;
             return booking;
