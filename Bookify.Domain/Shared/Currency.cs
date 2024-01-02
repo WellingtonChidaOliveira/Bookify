@@ -1,4 +1,4 @@
-﻿namespace Bookify.Domain.Apartments
+﻿namespace Bookify.Domain.Shared
 {
     public record Currency
     {
@@ -10,7 +10,7 @@
 
         public static Currency FromCode(string code)
         {
-            return All.FirstOrDefault(x => x.Code == code)?? throw new ApplicationException($"Currency with code {code} not found");
+            return All.FirstOrDefault(x => x.Code == code) ?? throw new ApplicationException($"Currency with code {code} not found");
         }
 
         public static readonly IReadOnlyCollection<Currency> All = new[]
