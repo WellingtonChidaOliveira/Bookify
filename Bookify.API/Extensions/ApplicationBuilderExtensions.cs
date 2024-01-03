@@ -1,4 +1,5 @@
-﻿using Bookify.Infrastructure;
+﻿using Bookify.API.Middleware;
+using Bookify.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
 namespace Bookify.API.Extensions
@@ -12,6 +13,11 @@ namespace Bookify.API.Extensions
             using var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
 
             dbContext.Database.Migrate();
+        }
+
+        public static void UseCustomExceptionHandler(this IApplicationBuilder app)
+        {
+            app.UseMiddleware<ExceptionHandlingMiddleware>();
         }
     }
 }

@@ -8,9 +8,9 @@ namespace Bookify.Application.Abstractions.Behaviors
         : IPipelineBehavior<TRequest, TResponse>
         where TRequest : IBaseCommand
     {
-        private readonly ILogger _logger;
+        private readonly ILogger<TRequest> _logger;
 
-        public LoggingBehavior(ILogger logger)
+        public LoggingBehavior(ILogger<TRequest> logger)
         {
             _logger = logger;
         }
