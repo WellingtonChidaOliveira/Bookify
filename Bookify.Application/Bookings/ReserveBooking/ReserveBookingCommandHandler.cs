@@ -39,7 +39,7 @@ namespace Bookify.Application.Bookings.ReserveBooking
                 return Result.Failure<Guid>(UserErrors.NotFound);
             }
 
-            var apartment = await _apartmentRepository.GetByIdASync(request.ApartmentId, cancellationToken);
+            var apartment = await _apartmentRepository.GetByIdAsync(request.ApartmentId, cancellationToken);
 
             if(apartment is null)
             {
@@ -62,7 +62,7 @@ namespace Bookify.Application.Bookings.ReserveBooking
 
             _bookingRepository.Add(booking);
 
-            await _unitOfWork.SaveChangesASync(cancellationToken);
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
 
             return booking.Id;
         }
