@@ -79,5 +79,8 @@ namespace Bookify.Domain.Users
         public static Error InvalidPasswordResetTokenUserStatus = new(
                        "User.InvalidPasswordResetTokenUserStatus",
                                   "The password reset token is");
+        public static Error InvalidCredentials = new(
+            "User.InvalidCredentials",
+            "The credentials are invalid");
     }
 }
