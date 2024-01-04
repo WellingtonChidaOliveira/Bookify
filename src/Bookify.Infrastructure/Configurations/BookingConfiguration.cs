@@ -15,6 +15,9 @@ namespace Bookify.Infrastructure.Configurations
 
             builder.HasKey(booking => booking.Id);
 
+            builder.Property(booking => booking.Id)
+                .HasConversion(builder => builder.Value, value => new BookingId(value));
+
             builder.OwnsOne(booking => booking.PriceForPeriod, priceBuilder =>
             {
                 priceBuilder.Property(money => money.Currency)
