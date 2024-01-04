@@ -364,7 +364,6 @@ FodyWeavers.xsd
 
 #Volume data
 .containers
-.files
 .gitattributes
 
 #Docker Compose
