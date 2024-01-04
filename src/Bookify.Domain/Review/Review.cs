@@ -1,17 +1,18 @@
 ﻿using Bookify.Domain.Abstractions;
+using Bookify.Domain.Apartments;
 using Bookify.Domain.Bookings;
 using Bookify.Domain.Review.Events;
-using System.Xml.Linq;
+using Bookify.Domain.Users;
 
 namespace Bookify.Domain.Review
 {
-    public sealed class Review : Entity
+    public sealed class Review : Entity<ReviewId>
     {
         private Review(
-       Guid id,
-       Guid apartmentId,
-       Guid bookingId,
-       Guid userId,
+       ReviewId id,
+       ApartmentId apartmentId,
+       BookingId bookingId,
+       UserId userId,
        Rating rating,
        Comment comment,
        DateTime createdOnUtc)
@@ -29,11 +30,11 @@ namespace Bookify.Domain.Review
 
         }
 
-        public Guid ApartmentId { get; private set; }
+        public ApartmentId ApartmentId { get; private set; }
 
-        public Guid BookingId { get; private set; }
+        public BookingId BookingId { get; private set; }
 
-        public Guid UserId { get; private set; }
+        public UserId UserId { get; private set; }
 
         public Rating Rating { get; private set; }
 
@@ -47,13 +48,13 @@ namespace Bookify.Domain.Review
             Comment comment,
             DateTime createdOnUtc)
         {
-            if(booking.Status != BookingStatus.Completed)
+            if (booking.Status != BookingStatus.Completed)
             {
                 return Result.Failure<Review>(ReviewErrors.NotEligible);
             }
 
             var review = new Review(
-                               Guid.NewGuid(),
+                               ReviewId.New(),
                                 booking.ApartmentId,
                                 booking.Id,
                                 booking.UserId,

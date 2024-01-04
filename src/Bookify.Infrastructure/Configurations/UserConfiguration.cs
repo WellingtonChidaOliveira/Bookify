@@ -11,6 +11,9 @@ namespace Bookify.Infrastructure.Configurations
             builder.ToTable("users");
 
             builder.HasKey(user => user.Id);
+            builder.Property(user => user.Id)
+                    .HasConversion(id => id.Value, value => new UserId(value));
+
             builder.Property(user => user.FirstName)
                     .HasMaxLength(200)
                     .HasConversion(firstName => firstName.Value, value => new FirstName(value));

@@ -14,6 +14,9 @@ namespace Bookify.Infrastructure.Configurations
             builder.ToTable("reviews");
             builder.HasKey(review => review.Id);
 
+            builder.Property(review => review.Id)
+                .HasConversion(reviewId => reviewId.Value, value => new ReviewId(value));
+
             builder.Property(review => review.Rating)
                 .HasConversion(rating => rating.Value, value => Rating.Create(value).Value);
 
