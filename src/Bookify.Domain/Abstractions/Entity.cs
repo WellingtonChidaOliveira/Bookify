@@ -1,6 +1,6 @@
 ﻿namespace Bookify.Domain.Abstractions
 {
-    public abstract class Entity<TEntityId>
+    public abstract class Entity<TEntityId> : IEntity
     {
 
         private readonly List<IDomainEvent> _domainEvents = new();
