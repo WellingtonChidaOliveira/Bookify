@@ -12,4 +12,5 @@ This project uses:
 - Fluent Validation
 - EFCore
 - Dapper
+
 This project, even basic represents the goods practice  of the Clean Architecture 
