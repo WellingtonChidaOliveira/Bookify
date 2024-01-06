@@ -20,12 +20,12 @@ namespace Bookify.Application.Bookings.GetBooking
             using var connection = _sqlConnectionFactory.CreateConnection();
 
             const string sql = """
-                SELECT 
+                SELECT
                     id AS Id,
                     apartment_id AS ApartmentId,
                     user_id AS UserId,
                     status AS Status,
-                    price_for_period_amount AS PriceAmount,    
+                    price_for_period_amount AS PriceAmount,
                     price_for_period_currency AS PriceCurrency,
                     cleaning_fee_amount AS CleaningFeeAmount,
                     cleaning_fee_currency AS CleaningFeeCurrency,
@@ -35,7 +35,7 @@ namespace Bookify.Application.Bookings.GetBooking
                     total_price_currency AS TotalPriceCurrency,
                     duration_start AS DurationStart,
                     duration_end AS DurationEnd,
-                    created_on_utc AS CreatedOnUtc,
+                    created_on_utc AS CreatedOnUtc
                 FROM bookings
                 WHERE id = @BookingId
                 """;
